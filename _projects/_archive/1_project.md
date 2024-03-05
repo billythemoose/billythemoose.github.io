@@ -1,10 +1,11 @@
 ---
 layout: page
-title: Jekyll Resume
-description: establishing a basic site
-img:
+title: project 1
+description: a project with a background image
+img: assets/img/12.jpg
 importance: 1
-category: technical
+category: work
+related_publications: einstein1956investigations, einstein1950meaning
 ---
 
 Every project has a beautiful feature showcase page.
