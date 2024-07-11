@@ -14,7 +14,11 @@ $(document).ready(function() {
   if($('#toc-sidebar').length){
     var navSelector = "#toc-sidebar";
     var $myNav = $(navSelector);
-    Toc.init($myNav);
+    var $headerTitle = $('.post-header').find('h1');
+    Toc.init({
+      $nav: $myNav,
+      $scope: $("h1, h2, h3, h4").not($headerTitle)
+    });
     $("body").scrollspy({
       target: navSelector,
     });

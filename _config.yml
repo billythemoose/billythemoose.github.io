@@ -124,7 +124,7 @@ bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: sidetracked # blog_name will be displayed in your blog page
-blog_description: I'll finish this as soon as I answer this other question...
+blog_description: I just need to look something up real quick...
 permalink: /blog/:year/:title/
 
 # Pagination
@@ -324,7 +324,6 @@ external_links:
   rel: external nofollow noopener
   target: _blank
   exclude:
-
 
 # -----------------------------------------------------------------------------
 # Responsive WebP Images
