@@ -4,7 +4,7 @@ permalink: /cv/
 title: cv
 nav: true
 nav_order: 5
-cv_pdf: mthomas_resume.pdf
+cv_pdf: michael_thomas_resume.pdf
 description: 
 toc:
   sidebar: left
