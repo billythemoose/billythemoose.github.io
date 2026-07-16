@@ -16,8 +16,12 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Hi! I am a Software Engineer at Sherpa 6 working on their Enterprise Mobility Management solution for a variety of different device types. I currently focus on backend development and flex to front end work when available. 
+Hi! I am a Senior Software Engineer with 10+ years of experience across government and commercial domains, specializing in back-end systems, scalable architectures, and full-stack legacy application modernization. I've spent my career on the less glamorous side of application development, like managing a fifteen-year-old codebase, solving production incidents with no clear cause, migrations with hard deadlines and no clean spec, while working at companies including Amazon, Sherpa 6, and Microsoft.
 
-Previously, I worked at Amazon on a host of different projects within Kindle. This included the  [Look Inside](https://www.amazon.com/gp/help/customer/display.html?nodeId=GHACQBMSMRM3LBQ4) feature of the retail website, the web-based [Kindle Cloud Reader](https://www.amazon.com/gp/help/customer/display.html?nodeId=GCQEMKHLBENNKWU2),  and the Kindle app for [Mac and PC](https://www.amazon.com/b?ie=UTF8&node=16571048011). I also developed large-scale migrations for backend services supporting online reading and for the Kindle content delivery network. 
+I enjoy turning ambiguous customer needs into effective solutions: decomposing monolithic architectures into microservices, planning long-term roadmaps, and collaborating directly with customers and cross-functional teams to clarify goals and deliver reliable results. Whether I'm leading a feature from design through delivery or helping peers succeed professionally, I'm driven by impact, clarity, and sustainable growth.
 
-I got my start working at Microsoft back when [Windows Phone](https://en.wikipedia.org/wiki/Windows_Phone) still existed. I created software to help manage and recover the hundreds of devices required for build validation and verification.
+A few patterns show up repeatedly across my work history.
+
+I deliver results while meeting deadlines and accelerating timelines. I root-cause production incidents, provide a solution, and outline a plan to avoid similar situations in the future.
+I'm a strong believer in delivering design and architecture documentation alongside production-ready code. I've generated documentation for pre-existing projects, implemented designs I created myself, and handed off documented architecture for partner teams to build on.
+I enjoy taking on responsibilities outside my formal title as a way to continuously improve and expand my horizons, striving to demonstrate success beyond my job level.
