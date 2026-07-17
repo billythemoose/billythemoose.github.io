@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Engineering Case Study - The Pivot
+title:  Case Study - The Pivot
 date:   2026-07-16 12:00:00
 description: what happens when you're forced to pivot?
 tags:  
