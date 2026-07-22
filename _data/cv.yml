@@ -7,8 +7,6 @@
       value: Software Development Engineer
     - name: Email
       value: mdiegothomas@gmail.com
-    - name: Languages
-      value: Java, Go, TypeScript, C#, SQL 
 
 - title: Education
   type: time_table
@@ -24,40 +22,49 @@
       institution: Sherpa 6
       year: 2023 - PRESENT
       description:
-        - Enterprise Mobility Management
+        - Worked as a Functional Lead to help engineers advance to more responsible roles.
+        - Authored Interface Control Documentation (ICD) defining API architecture to enforce interactions across disparate clients and secure the company's involvement in future programs.
+        - Designed and shipped an opt-in review system allowing for multiple reviewers, staged approvals, and component signing mid-review, replacing a rigid single-stage review process.
+        - Authored a Basis of Estimate (BOE) spanning two concurrent initiatives; approved by client leadership and directly led to 2 new engineering roles.
+        - Designed an independent, vendor-agnostic device configuration architecture, replacing hard-coded single-vendor logic and streamlining future device integrations.
+        - Delivered a full architecture documentation suite covering device onboarding, management, and integration capabilities with accompanying PlantUML diagrams for internal and external partners.
+        - Shipped time-sensitive security mitigation for end-user device vulnerabilities well ahead of the hardware vendor's official patch.
+        - Built Go proficiency from zero to leading technical interviews for the language, with several recommended hires now performing well across teams.
     - title: Software Development Engineer II 
       institution: Aiphone
       year: 2023
       description:
-        - CI\CD Pipeline creation and management
-        - API development 
-        - React SPA
+        - Led the expansion of SaaS offerings to modernize the company, including designing and implementing user management systems, cloud-based configuration systems, and billing portals — all built on AWS.
     - title: Software Development Engineer I 
       institution: Amazon
       year: 2022 - 2023
       description:
-        - Enterprise cloud migrations
-        - Desktop and cloud application development
-        - Tier-1 service development and support
+        - Designed the migration architecture for a decade-old feature off a deprecated internal Perl-based platform (audited 3,859 LOC, defined a parallel-buildable component structure), producing documentation that let a new 8-engineer team complete the migration by deadline.
+        - Enabled international expansion of a children's reading app into Japan and the UK by adding right-to-left localization support to an undocumented legacy rendering engine, which increased first-week traffic by 734% in new markets.
+        - Led 5 concurrent infrastructure migrations (OS, framework, language runtime, and service deprecations) across dozens of services and environments, including a CVE remediation.
+        - Authored the complete technical knowledge base (34 documents, 9 runbooks, 17 dashboards, 19 CTIs) for a 27-service platform ahead of a full team relocation, enabling a new team to hit 100% of post-transition deadlines.
     - title: Support Engineer
       institution: Amazon
       year: 2019 - 2022
       description:
-        - Legacy feature modernization, migration, and deprecation
-        - Automated test management 
-        - Development and production pipeline management 
-        - Develop new features and KTLO updates
+        - Sole engineer to resolve a remote-code-execution vulnerability in a legacy desktop application. Root-caused the exploit, rebuilt a defunct release/signing pipeline for Windows and macOS, and shipped a fix within a security researcher's 2-month disclosure deadline.
+        - Reduced Sev-2 production incidents 12% year-over-year through targeted alarm tuning and monitoring standardization.
+        - Root-caused and resolved two high-severity production bugs affecting 1.5M+ customers each, including one escalated directly by an external security researcher.
     - title: Lab Engineer
       institution: Microsoft
       year: 2015 - 2018
       description:
-        - Develop lab management software
-        - Deploy and support lab devices
-        - Teat automation
+        - Designed and implemented custom monitoring software to generate automated alerts and device-health reporting across the lab fleet.
+        - Built object-oriented automation to replace manually executed operational tasks, reducing manual overhead for the team.
+        - Deployed and supported server and desktop infrastructure across a hardware testing lab, designing stability parameters to distinguish functional from non-functional devices ahead of test cycles.
+        - Triaged device failures and authored root cause analysis documentation, driving faster resolution and reducing repeat incidents.
+        - Managed and maintained hardware lab infrastructure, ensuring consistent availability and accessibility for developers, test managers, and fellow lab engineers.
+        - Partnered cross-functionally with developers, test managers, and lab engineers to optimize shared lab resource allocation.
+        - Owned incidents, tasks, service changes, and problem records end-to-end within an ITSM-style workflow, while driving toward zero-downtime infrastructure maintenance and patching.
 
 - title: Software Development Skills 
   type: list
   contents:
-    - <u>Languages:</u> Java, Go, TypeScript, C#, SQL, JavaScript
+    - <u>Languages:</u> Go, Java, SQL, TypeScript, C#, Bash
     - <u>Amazon Web Services (AWS):</u> EC2, Lambda, IAM, Cognito, S3, DynamoDB, API Gateway, CloudFront, Route 53, CloudFormation, CloudWatch, SQS, CodeCommit, CodeBuild, CodeDeploy, CodePipeline
-    - <u>Other:</u> Git, Docker, React, NodeJS, Spring 
+    - <u>Other:</u> Git, Docker, PostgreSQL, OpenAPI, PlantUML, React, Node.js, Spring 
