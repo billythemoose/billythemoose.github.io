@@ -65,6 +65,6 @@
 - title: Software Development Skills 
   type: list
   contents:
-    - <u>Languages:</u> Go, Java, SQL, TypeScript, C#, Bash
+    - <u>Languages:</u> Go, Java, SQL, TypeScript, C#, Bash, Kotlin
     - <u>Amazon Web Services (AWS):</u> EC2, Lambda, IAM, Cognito, S3, DynamoDB, API Gateway, CloudFront, Route 53, CloudFormation, CloudWatch, SQS, CodeCommit, CodeBuild, CodeDeploy, CodePipeline
-    - <u>Other:</u> Git, Docker, PostgreSQL, OpenAPI, PlantUML, React, Node.js, Spring 
+    - <u>Other:</u> Git, Docker, PostgreSQL, OpenAPI, PlantUML, React, Node.js, Spring, Android
