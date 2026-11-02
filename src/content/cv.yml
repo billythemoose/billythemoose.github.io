@@ -18,7 +18,7 @@
 - title: Experience
   type: time_table
   contents:
-    - title: Software Development Engineer III 
+    - title: Software Development Engineer III
       institution: Sherpa 6
       year: 2023 - PRESENT
       description:
@@ -30,12 +30,12 @@
         - Delivered a full architecture documentation suite covering device onboarding, management, and integration capabilities with accompanying PlantUML diagrams for internal and external partners.
         - Shipped time-sensitive security mitigation for end-user device vulnerabilities well ahead of the hardware vendor's official patch.
         - Built Go proficiency from zero to leading technical interviews for the language, with several recommended hires now performing well across teams.
-    - title: Software Development Engineer II 
+    - title: Software Development Engineer II
       institution: Aiphone
       year: 2023
       description:
         - Led the expansion of SaaS offerings to modernize the company, including designing and implementing user management systems, cloud-based configuration systems, and billing portals — all built on AWS.
-    - title: Software Development Engineer I 
+    - title: Software Development Engineer I
       institution: Amazon
       year: 2022 - 2023
       description:
@@ -62,7 +62,7 @@
         - Partnered cross-functionally with developers, test managers, and lab engineers to optimize shared lab resource allocation.
         - Owned incidents, tasks, service changes, and problem records end-to-end within an ITSM-style workflow, while driving toward zero-downtime infrastructure maintenance and patching.
 
-- title: Software Development Skills 
+- title: Software Development Skills
   type: list
   contents:
     - <u>Languages:</u> Go, Java, SQL, TypeScript, C#, Bash, Kotlin

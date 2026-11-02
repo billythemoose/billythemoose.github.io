@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PostTaxonomy from '@/components/PostTaxonomy.astro';
+import { formatLongDate, type Post } from '@/lib/posts';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article>
+    <header>
+      <h1>{post.data.title}</h1>
+      <p class="mb-0 text-sm text-muted">{formatLongDate(post.data.date)}</p>
+      <PostTaxonomy post={post} class="pt-1 pb-4" />
+    </header>
+    <div class="markdown">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

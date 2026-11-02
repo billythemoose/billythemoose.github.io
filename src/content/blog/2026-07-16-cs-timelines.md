@@ -1,23 +1,20 @@
 ---
-layout: post
-title:  Case Study - The Pivot
-date:   2026-07-16 12:00:00
+title: Case Study - The Pivot
+date: 2026-07-16 12:00:00
 description: what happens when you're forced to pivot?
-tags:  
+tags:
 categories: case-study
 ---
 
-## One-Line Summary 
+## One-Line Summary
 
 One of the realities of being an engineer in an agile environment is that you will be forced to pivot, whether you like it or not. This is a review of two different times I was forced to make a rather large pivot on two different projects. Both were successful yet had different long-term outcomes.
-
 
 ## Context
 
 The first project (Project Alpha) was a large-scale migration. A legacy Perl-based platform that had been accumulating tech debt for over a decade was being forcibly decommissioned for security reasons (really old Perl code). I was taking on the entire migration to use as experience and as evidence for a promotion. This migration had a hard deadline, as the platform would be shut off, ignoring all other dependencies. You either migrate or your service breaks.
 
 The second project (The Beta Initiative) was a task scoped across multiple stages that our team was beginning to flesh out. It had a fairly lenient schedule. Our team was treating it as a research task and were excited to shift into actually implementing the new concepts.
-
 
 ## Two Different Beginnings
 
@@ -41,13 +38,11 @@ The Beta Initiative was a little more tumultuous. The task became a high-priorit
 
 The majority of my time was on the integration side, trying to define exactly what the team needed to complete to show the feature was a success. At the same time, I still needed to help the design team understand the task so they could define user flows, while also unblocking other developers actively working on updating existing components. This chaotic development cycle created a revolving door of roadblocks and issues, exacerbated by the immovable deadline. A research task would finish, unblocking implementation efforts, but design would come back with new concepts based on new requirements from product owners, meaning more research needed to be completed during implementation, while other components would need to be rewritten to work with adjusted concepts, but limitations of the platform meant certain requirements needed to be reevaluated and tradeoffs approved by product owners, and so on. The team was running head-first down a hill, but there was no stopping and no real room for failure.
 
-
 ## End Result
 
 Project Alpha was a success. The team onboarded, ramped up, I walked them through initial development, they got on a plane, and that was that. They eventually finished implementation before the deadline to turn off the legacy service, and scaled the new implementation without issue.
 
 The Beta Initiative, while also a success, was more painful. The team was able to complete development on the feature and deploy the final result. The project functioned as intended, but the way it was handled created more follow-on work after launch.
-
 
 ## Looking Back
 

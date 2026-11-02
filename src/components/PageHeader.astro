@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<header class="mb-2">
+  <h1 class="flex items-baseline gap-2">
+    <slot name="icon" />
+    <span>{title}</span>
+    <span class="ml-auto">
+      <slot name="action" />
+    </span>
+  </h1>
+  {description && <p class="mb-8 text-sm">{description}</p>}
+</header>

@@ -1,0 +1,30 @@
+---
+// Renders a Font Awesome Free icon as inline SVG at build time, so no icon
+// font or client JS is shipped. Icons: CC BY 4.0, https://fontawesome.com/license/free
+import type { IconDefinition } from '@fortawesome/fontawesome-common-types';
+
+interface Props {
+  icon: IconDefinition;
+  class?: string;
+  title?: string;
+}
+
+const { icon, class: className, title } = Astro.props;
+const [width, height, , , pathData] = icon.icon;
+const paths = Array.isArray(pathData) ? pathData : [pathData];
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox={`0 0 ${width} ${height}`}
+  width={`${width / height}em`}
+  height="1em"
+  class:list={['inline overflow-visible fill-current align-[-0.125em]', className]}
+  role={title ? 'img' : undefined}
+  aria-hidden={title ? undefined : 'true'}
+  aria-label={title}
+>
+  {paths.map((d) => (
+    <path d={d} />
+  ))}
+</svg>

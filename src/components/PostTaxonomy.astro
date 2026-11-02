@@ -1,0 +1,34 @@
+---
+// "📅 2026 · # amazon · 🏷 case-study" links under a post title.
+import Icon from '@/components/Icon.astro';
+import { postYear, type Post } from '@/lib/posts';
+import { faCalendar, faHashtag, faTag } from '@fortawesome/free-solid-svg-icons';
+
+interface Props {
+  post: Post;
+  class?: string;
+}
+
+const { post, class: className } = Astro.props;
+const year = postYear(post);
+const links = [
+  { href: `/blog/${year}/`, icon: faCalendar, label: year },
+  ...post.data.tags.map((tag) => ({ href: `/blog/tag/${tag}/`, icon: faHashtag, label: tag })),
+  ...post.data.categories.map((category) => ({
+    href: `/blog/category/${category}/`,
+    icon: faTag,
+    label: category,
+  })),
+];
+---
+
+<p class:list={['text-sm text-muted', className]}>
+  {links.map((link, index) => (
+    <>
+      {index > 0 && <span class="px-2">·</span>}
+      <a href={link.href} class="text-muted hover:text-accent hover:no-underline">
+        <Icon icon={link.icon} class="text-[0.875em]" /> {link.label}
+      </a>
+    </>
+  ))}
+</p>

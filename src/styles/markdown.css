@@ -1,0 +1,73 @@
+/* Styles for rendered Markdown (posts, projects, bio). Mirrors the Bootstrap
+   defaults and al-folio overrides the Jekyll site used. */
+
+.markdown {
+  :where(ul, ol) {
+    @apply mb-4 pl-10;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  :where(ul, ol) :where(ul, ol) {
+    @apply mb-0;
+  }
+
+  ul ul {
+    list-style-type: circle;
+  }
+
+  hr {
+    @apply border-divider my-4 border-t;
+  }
+
+  img {
+    @apply h-auto max-w-full rounded;
+  }
+
+  table {
+    @apply mb-4 w-full;
+  }
+
+  th,
+  td {
+    @apply border-divider border-t p-3 text-left align-top;
+  }
+
+  th {
+    @apply font-bold;
+  }
+
+  blockquote {
+    @apply border-accent bg-bg my-6 border-l-[5px] p-4 text-[1.2rem];
+  }
+
+  blockquote p {
+    @apply mb-0;
+  }
+
+  code {
+    @apply bg-code text-accent rounded-[3px] p-[3px] text-[87.5%];
+  }
+
+  pre {
+    @apply mb-4 overflow-x-auto rounded-md px-3 py-1.5 text-[87.5%];
+    background-color: var(--global-code-bg-color) !important;
+  }
+
+  pre code {
+    @apply rounded-none bg-transparent p-0 text-[100%];
+    color: inherit;
+  }
+}
+
+/* Shiki renders both themes; switch token colors with the site theme. */
+[data-theme='dark'] .astro-code,
+[data-theme='dark'] .astro-code span {
+  color: var(--shiki-dark) !important;
+}

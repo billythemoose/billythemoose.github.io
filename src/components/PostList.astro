@@ -1,0 +1,28 @@
+---
+import PostTaxonomy from '@/components/PostTaxonomy.astro';
+import { formatLongDate, postUrl, readingTime, type Post } from '@/lib/posts';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ul class="mb-10">
+  {posts.map((post) => (
+    <li class="border-b border-divider py-8">
+      <h3>
+        <a href={postUrl(post)} class="text-fg hover:text-accent hover:no-underline">
+          {post.data.title}
+        </a>
+      </h3>
+      {post.data.description && <p>{post.data.description}</p>}
+      <p class="mb-0 text-sm text-muted">
+        {readingTime(post)} min read<span class="px-2">·</span>
+        {formatLongDate(post.data.date)}
+      </p>
+      <PostTaxonomy post={post} class="mb-0 pt-1" />
+    </li>
+  ))}
+</ul>

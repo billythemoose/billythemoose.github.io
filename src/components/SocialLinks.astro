@@ -1,0 +1,30 @@
+---
+import Icon from '@/components/Icon.astro';
+import { SITE, SOCIAL } from '@/config';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+
+const links = [
+  { href: `mailto:${SITE.email}`, title: 'email', icon: faEnvelope, external: false },
+  { href: `https://github.com/${SOCIAL.github}`, title: 'GitHub', icon: faGithub, external: true },
+  {
+    href: `https://www.linkedin.com/in/${SOCIAL.linkedin}`,
+    title: 'LinkedIn',
+    icon: faLinkedin,
+    external: true,
+  },
+];
+---
+
+<div class="mt-8 flex justify-center gap-4 text-[4rem]">
+  {links.map((link) => (
+    <a
+      href={link.href}
+      title={link.title}
+      class="text-fg hover:text-accent"
+      {...(link.external ? { target: '_blank', rel: 'external nofollow noopener' } : {})}
+    >
+      <Icon icon={link.icon} title={link.title} />
+    </a>
+  ))}
+</div>

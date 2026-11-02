@@ -1,0 +1,26 @@
+# URLs served by the Jekyll site (from https://billythemoose.github.io/sitemap.xml, 2026-11-02),
+# plus files not listed in the sitemap. scripts/check-urls.mjs checks each one exists in dist/.
+# Lines starting with '!' were dropped on purpose and are expected to be missing.
+
+/
+/cv/
+/blog/
+/blog/2026/
+/blog/2026/cs-az-mds/
+/blog/2026/cs-timelines/
+/blog/tag/amazon/
+/blog/category/case-study/
+/feed.xml
+/robots.txt
+/404.html
+/assets/pdf/michael_thomas_resume.pdf
+
+# Template placeholders and disabled features
+!/news/
+!/news/announcement_1/
+!/news/announcement_2/
+!/news/announcement_3/
+!/projects/1_project/
+!/_pages/dropdown/
+# Replaced by /sitemap-index.xml (robots.txt points to it)
+!/sitemap.xml
