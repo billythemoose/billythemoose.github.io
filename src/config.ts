@@ -10,7 +10,7 @@ export const SITE = {
     'Michael Thomas: senior software engineer specializing in back-end systems, scalable architectures, and legacy modernization.',
   lang: 'en',
   email: 'mdiegothomas@gmail.com',
-  resumePdf: '/assets/pdf/michael_thomas_resume.pdf',
+  resumePdf: '/assets/pdf/resume.pdf',
 };
 
 export const BLOG = {

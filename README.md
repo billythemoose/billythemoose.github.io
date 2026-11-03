@@ -22,7 +22,7 @@ npm run check:urls # confirm every URL from the old Jekyll site still exists in 
 | Blog posts | `src/content/blog/YYYY-MM-DD-slug.md` → `/blog/YYYY/slug/` |
 | Projects | `src/content/projects/slug.md` → `/projects/slug/` |
 | CV | `src/content/cv.yml` (sections of type `map`, `time_table` or `list`) |
-| Resume PDF | `public/assets/pdf/michael_thomas_resume.pdf` |
+| Resume PDF | `public/assets/pdf/resume.pdf` |
 | About page bio | `src/content/about.md` |
 | Profile photo | `src/assets/prof_pic.jpg` |
 | Name, socials, nav | `src/config.ts` |

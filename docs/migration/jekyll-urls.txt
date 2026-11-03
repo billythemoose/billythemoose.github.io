@@ -13,7 +13,7 @@
 /feed.xml
 /robots.txt
 /404.html
-/assets/pdf/michael_thomas_resume.pdf
+/assets/pdf/resume.pdf
 
 # Template placeholders and disabled features
 !/news/
