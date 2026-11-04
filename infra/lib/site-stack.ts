@@ -12,6 +12,7 @@ import * as s3 from 'aws-cdk-lib/aws-s3';
 import type { Construct } from 'constructs';
 
 const GITHUB_OIDC_HOST = 'token.actions.githubusercontent.com';
+const IMMUTABLE_GITHUB_REPO = /^[^@/]+@\d+\/[^@/]+@\d+$/;
 
 /** Settings for {@link SiteStack}. Values that identify the account come from `infra/.env`. */
 export interface SiteStackProps extends StackProps {
@@ -19,7 +20,11 @@ export interface SiteStackProps extends StackProps {
   readonly domainName: string;
   /** ID of the existing Route 53 public hosted zone for `domainName`. */
   readonly hostedZoneId: string;
-  /** `owner/repo` allowed to deploy. */
+  /**
+   * Repo allowed to deploy, in GitHub's immutable OIDC form `owner@ownerId/repo@repoId`
+   * (from `gh api repos/OWNER/REPO/actions/oidc/customization/sub`). The numeric IDs
+   * survive renames, so a new repo that reuses the name can't assume the role.
+   */
   readonly githubRepo: string;
   /** Only workflows running on this branch can assume the deploy role. */
   readonly deployBranch: string;
@@ -35,6 +40,11 @@ export class SiteStack extends Stack {
   constructor(scope: Construct, id: string, props: SiteStackProps) {
     super(scope, id, props);
 
+    if (!IMMUTABLE_GITHUB_REPO.test(props.githubRepo)) {
+      throw new Error(
+        `githubRepo must look like owner@ownerId/repo@repoId, got "${props.githubRepo}".`,
+      );
+    }
     const { domainName } = props;
     const wwwDomainName = `www.${domainName}`;
 
