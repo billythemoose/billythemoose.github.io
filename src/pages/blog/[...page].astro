@@ -1,0 +1,45 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Pagination from '@/components/Pagination.astro';
+import PostList from '@/components/PostList.astro';
+import { BLOG } from '@/config';
+import { formatLongDate, getPosts, postUrl } from '@/lib/posts';
+
+// `/blog/` for page 1, then `/blog/page/2/`, ... like jekyll-paginate-v2.
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getPosts();
+  const featured = posts.filter((post) => post.data.featured);
+  return paginate(posts, { pageSize: BLOG.pageSize, props: { featured } }).map((page) => ({
+    ...page,
+    params: { page: page.params.page ? `page/${page.params.page}` : undefined },
+  }));
+}) satisfies GetStaticPaths;
+
+const { page, featured } = Astro.props;
+---
+
+<BaseLayout title="blog" description={BLOG.description}>
+  <div class="border-b border-divider pt-8 pb-12 text-center">
+    <h1 class="text-[5rem] text-accent">{BLOG.name}</h1>
+    <h2>{BLOG.description}</h2>
+  </div>
+
+  {page.currentPage === 1 && featured.length > 0 && (
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      {featured.map((post) => (
+        <a
+          href={postUrl(post)}
+          class="block rounded border border-divider bg-card p-4 shadow-card text-muted hover:text-accent hover:no-underline"
+        >
+          <h3 class="text-xl">{post.data.title}</h3>
+          {post.data.description && <p class="truncate">{post.data.description}</p>}
+          <p class="mb-0 text-sm">{formatLongDate(post.data.date)}</p>
+        </a>
+      ))}
+    </div>
+  )}
+
+  <PostList posts={page.data} />
+  <Pagination page={page} />
+</BaseLayout>

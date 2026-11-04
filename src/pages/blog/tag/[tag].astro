@@ -1,0 +1,21 @@
+---
+import type { GetStaticPaths } from 'astro';
+import ArchivePage from '@/components/ArchivePage.astro';
+import { getPosts, groupBy } from '@/lib/posts';
+import { faHashtag } from '@fortawesome/free-solid-svg-icons';
+
+export const getStaticPaths = (async () => {
+  const byTag = groupBy(await getPosts(), (post) => post.data.tags);
+  return [...byTag].map(([tag, posts]) => ({ params: { tag }, props: { posts } }));
+}) satisfies GetStaticPaths;
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<ArchivePage
+  title={tag}
+  description="an archive of posts with this tag"
+  icon={faHashtag}
+  posts={posts}
+/>

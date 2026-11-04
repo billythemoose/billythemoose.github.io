@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import CvList from '@/components/cv/CvList.astro';
+import CvMap from '@/components/cv/CvMap.astro';
+import CvTimeTable from '@/components/cv/CvTimeTable.astro';
+import { SITE } from '@/config';
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+
+const sections = (await getCollection('cv'))
+  .map((entry) => ({ id: entry.id, ...entry.data }))
+  .sort((a, b) => a.order - b.order);
+---
+
+<BaseLayout title="cv" description={`Curriculum vitae of ${SITE.fullName}.`}>
+  <div class="flex flex-col sm:flex-row sm:gap-3">
+    <aside class="hidden sm:block sm:w-1/4 sm:shrink-0">
+      <nav aria-label="CV sections" class="sticky top-20">
+        <ul class="text-xs font-medium">
+          {sections.map((section) => (
+            <li>
+              <a
+                href={`#${section.id}`}
+                class="block border-l border-transparent py-1 pl-3 text-fg hover:border-accent hover:text-accent hover:no-underline"
+              >
+                {section.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="min-w-0 flex-1">
+      <PageHeader title="cv">
+        <a
+          slot="action"
+          href={SITE.resumePdf}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Download resume (PDF)"
+        >
+          <Icon icon={faFilePdf} title="Download resume (PDF)" />
+        </a>
+      </PageHeader>
+
+      <div class="mb-10">
+        {sections.map((section) => (
+          <section
+            id={section.id}
+            class="mt-4 scroll-mt-20 rounded border border-divider bg-card p-4 shadow-card shadow-card"
+          >
+            <h3 class="mb-3">{section.title}</h3>
+            {section.type === 'map' && <CvMap contents={section.contents} />}
+            {section.type === 'time_table' && <CvTimeTable contents={section.contents} />}
+            {section.type === 'list' && <CvList contents={section.contents} />}
+          </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

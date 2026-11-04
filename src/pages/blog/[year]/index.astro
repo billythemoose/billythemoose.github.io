@@ -1,0 +1,21 @@
+---
+import type { GetStaticPaths } from 'astro';
+import ArchivePage from '@/components/ArchivePage.astro';
+import { getPosts, groupBy, postYear } from '@/lib/posts';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+
+export const getStaticPaths = (async () => {
+  const byYear = groupBy(await getPosts(), (post) => [postYear(post)]);
+  return [...byYear].map(([year, posts]) => ({ params: { year }, props: { posts } }));
+}) satisfies GetStaticPaths;
+
+const { year } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<ArchivePage
+  title={year}
+  description="an archive of posts from this year"
+  icon={faCalendar}
+  posts={posts}
+/>

@@ -1,0 +1,47 @@
+---
+import type { Page } from 'astro';
+
+interface Props {
+  page: Page<unknown>;
+}
+
+const { page } = Astro.props;
+// Built here rather than from page.url because the route rewrites page params
+// to Jekyll's `/blog/page/N/` format.
+const pageUrl = (n: number) => (n === 1 ? '/blog/' : `/blog/page/${n}/`);
+const pages = Array.from({ length: page.lastPage }, (_, i) => i + 1);
+const linkClass =
+  'block border border-divider px-3 py-1.5 text-fg hover:bg-divider hover:no-underline';
+---
+
+{page.lastPage > 1 && (
+  <nav aria-label="Blog pages" class="mb-10 flex justify-center">
+    <ul class="flex">
+      {page.currentPage > 1 && (
+        <li>
+          <a href={pageUrl(page.currentPage - 1)} class={linkClass}>
+            Newer
+          </a>
+        </li>
+      )}
+      {pages.map((n) => (
+        <li>
+          <a
+            href={pageUrl(n)}
+            class:list={[linkClass, n === page.currentPage && 'border-accent bg-accent text-white']}
+            aria-current={n === page.currentPage ? 'page' : undefined}
+          >
+            {n}
+          </a>
+        </li>
+      ))}
+      {page.currentPage < page.lastPage && (
+        <li>
+          <a href={pageUrl(page.currentPage + 1)} class={linkClass}>
+            Older
+          </a>
+        </li>
+      )}
+    </ul>
+  </nav>
+)}

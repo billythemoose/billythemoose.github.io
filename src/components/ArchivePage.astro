@@ -1,0 +1,24 @@
+---
+import type { IconDefinition } from '@fortawesome/fontawesome-common-types';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import PostTable from '@/components/PostTable.astro';
+import type { Post } from '@/lib/posts';
+
+interface Props {
+  title: string;
+  description: string;
+  icon: IconDefinition;
+  posts: Post[];
+}
+
+const { title, description, icon, posts } = Astro.props;
+---
+
+<BaseLayout title={title} description={`${description}: ${title}`}>
+  <PageHeader title={title} description={description}>
+    <Icon slot="icon" icon={icon} class="text-[0.875em]" />
+  </PageHeader>
+  <PostTable posts={posts} />
+</BaseLayout>

@@ -1,0 +1,134 @@
+---
+import ThemeToggle from '@/components/ThemeToggle.astro';
+import { NAV, SITE } from '@/config';
+
+const path = Astro.url.pathname;
+const isHome = path === '/';
+const isActive = (href: string) => (href === '/' ? isHome : path.startsWith(href));
+---
+
+<header>
+  <nav
+    id="navbar"
+    class="fixed inset-x-0 top-0 z-20 border-b border-divider bg-bg/95"
+    aria-label="Main"
+  >
+    <div class="container-content flex min-h-14 flex-wrap items-center">
+      {!isHome && (
+        <a href="/" class="mr-4 py-1 text-xl font-light text-fg hover:no-underline">
+          <span class="font-bold">{SITE.firstName} </span>
+          {SITE.lastName}
+        </a>
+      )}
+
+      <button
+        id="nav-toggle"
+        type="button"
+        class="ml-auto cursor-pointer px-3 py-3 sm:hidden"
+        aria-controls="nav-links"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <ul
+        id="nav-links"
+        class="hidden w-full flex-col items-end pb-2 sm:ml-auto sm:flex sm:w-auto sm:flex-row sm:items-center sm:pb-0"
+      >
+        {NAV.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={[
+                'block px-2 py-2 hover:text-accent hover:no-underline',
+                isActive(item.href) ? 'font-normal text-accent' : 'text-fg',
+              ]}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+            >
+              {item.title}
+            </a>
+          </li>
+        ))}
+        <li class="pl-2.5">
+          <ThemeToggle />
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <progress id="progress" value="0" aria-hidden="true"></progress>
+</header>
+
+<style>
+  .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin-bottom: 4px;
+    border-radius: 1px;
+    background-color: var(--global-text-color);
+    transition: all 0.2s;
+  }
+
+  [aria-expanded='true'] .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+  }
+
+  [aria-expanded='true'] .middle-bar {
+    opacity: 0;
+  }
+
+  [aria-expanded='true'] .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+  }
+
+  /* Reading progress bar under the navbar. */
+  progress {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 1px;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    color: var(--global-theme-color);
+  }
+
+  progress::-webkit-progress-bar {
+    background-color: transparent;
+  }
+
+  progress::-webkit-progress-value {
+    background-color: var(--global-theme-color);
+  }
+
+  progress::-moz-progress-bar {
+    background-color: var(--global-theme-color);
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('nav-toggle')!;
+  const links = document.getElementById('nav-links')!;
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(open));
+    links.classList.toggle('hidden', !open);
+    links.classList.toggle('flex', open);
+  });
+
+  const progress = document.getElementById('progress') as HTMLProgressElement;
+  const updateProgress = () => {
+    progress.max = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+    progress.value = window.scrollY;
+  };
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+</script>

@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      astro:
+        patterns: ['astro', '@astrojs/*', 'satteri']
+      dependencies:
+        patterns: ['*']
+        exclude-patterns: ['astro', '@astrojs/*', 'satteri']
+  - package-ecosystem: npm
+    directory: /infra
+    schedule:
+      interval: monthly
+    groups:
+      cdk:
+        patterns: ['*']
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

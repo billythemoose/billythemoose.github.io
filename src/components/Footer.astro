@@ -1,0 +1,19 @@
+---
+import { SITE } from '@/config';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-12 border-t border-divider py-10 text-[0.9rem]">
+  <div class="container-content">
+    {`© Copyright ${year} ${SITE.fullName}. Powered by `}
+    <a href="https://astro.build/" target="_blank" rel="external nofollow noopener">
+      Astro
+    </a>
+    {'. Hosted by '}
+    <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">
+      GitHub Pages
+    </a>
+    .
+  </div>
+</footer>

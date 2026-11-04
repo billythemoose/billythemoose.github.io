@@ -1,0 +1,43 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+
+export const getStaticPaths = (async () => {
+  const projects = await getCollection(
+    'projects',
+    ({ data }) => import.meta.env.DEV || !data.draft,
+  );
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}) satisfies GetStaticPaths;
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout title={project.data.title} description={project.data.description}>
+  <PageHeader title={project.data.title} description={project.data.description} />
+
+  {(project.data.repo || project.data.demo) && (
+    <p class="flex gap-4 text-sm">
+      {project.data.repo && (
+        <a href={project.data.repo} target="_blank" rel="noopener">
+          <Icon icon={faGithub} /> source
+        </a>
+      )}
+      {project.data.demo && (
+        <a href={project.data.demo} target="_blank" rel="noopener">
+          <Icon icon={faArrowUpRightFromSquare} /> live demo
+        </a>
+      )}
+    </p>
+  )}
+
+  <article class="markdown">
+    <Content />
+  </article>
+</BaseLayout>

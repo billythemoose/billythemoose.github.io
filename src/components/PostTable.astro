@@ -1,0 +1,30 @@
+---
+// Compact "date | title" table used on the home page and the archive pages.
+import { formatShortDate, postUrl, type Post } from '@/lib/posts';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="overflow-x-auto">
+  <table class="mb-4 w-full">
+    <tbody>
+      {posts.map((post) => (
+        <tr>
+          <th
+            scope="row"
+            class="w-1/5 px-1 py-[0.6rem] text-left align-top font-bold whitespace-nowrap"
+          >
+            {formatShortDate(post.data.date)}
+          </th>
+          <td class="px-1 py-[0.6rem] pl-4">
+            <a href={postUrl(post)}>{post.data.title}</a>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,14 @@
+---
+interface Props {
+  // Items come from our own cv.yml and may contain inline HTML.
+  contents: string[];
+}
+
+const { contents } = Astro.props;
+---
+
+<ul class="font-light">
+  {contents.map((item) => (
+    <li class="border-b border-divider px-5 py-3 last:border-b-0" set:html={item} />
+  ))}
+</ul>

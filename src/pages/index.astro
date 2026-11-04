@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PostTable from '@/components/PostTable.astro';
+import SocialLinks from '@/components/SocialLinks.astro';
+import { Content as Bio } from '@/content/about.md';
+import { BLOG, SITE } from '@/config';
+import { getPosts } from '@/lib/posts';
+import profilePic from '@/assets/prof_pic.jpg';
+
+const latestPosts = (await getPosts()).slice(0, BLOG.latestPostsOnHome);
+---
+
+<BaseLayout>
+  <header>
+    <h1>
+      <span class="font-bold">{SITE.firstName}</span> {SITE.lastName}
+    </h1>
+  </header>
+
+  <article>
+    <figure class="mb-4 w-full sm:float-right sm:ml-4 sm:w-[30%]">
+      <Image
+        src={profilePic}
+        alt={`Photo of ${SITE.fullName}`}
+        widths={[480, 800]}
+        sizes="(min-width: 800px) 231px, (min-width: 576px) 30vw, 95vw"
+        class="h-auto w-full rounded shadow-card"
+        loading="eager"
+      />
+    </figure>
+
+    <div class="markdown">
+      <Bio />
+    </div>
+
+    {latestPosts.length > 0 && (
+      <section class="clear-both">
+        <h2>
+          <a href="/blog/" class="text-inherit hover:no-underline">
+            latest posts
+          </a>
+        </h2>
+        <PostTable posts={latestPosts} />
+      </section>
+    )}
+
+    <SocialLinks />
+  </article>
+</BaseLayout>

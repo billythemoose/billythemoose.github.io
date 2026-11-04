@@ -1,0 +1,18 @@
+---
+interface Props {
+  contents: { name: string; value: string }[];
+}
+
+const { contents } = Astro.props;
+---
+
+<table>
+  <tbody>
+    {contents.map(({ name, value }) => (
+      <tr>
+        <td class="p-1 pr-2 align-top font-bold">{name}</td>
+        <td class="p-1 pl-2 font-light">{value}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
