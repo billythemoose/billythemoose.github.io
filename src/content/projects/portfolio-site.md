@@ -3,7 +3,7 @@ title: Portfolio Site
 description: this site, rebuilt from Jekyll to Astro
 category: technical
 importance: 1
-repo: https://github.com/billythemoose/billythemoose.github.io
+repo: https://github.com/billythemoose/portfolio
 ---
 
 This site started as a Jekyll project built on the al-folio academic theme and deployed to GitHub Pages. It has been rebuilt with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/), keeping the same design, content, and URLs.
