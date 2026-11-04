@@ -57,4 +57,13 @@ demo: https://demo.example.com
 
 ## Deployment
 
-`.github/workflows/deploy.yml` type-checks, builds and checks URLs on every pull request, and deploys `dist/` to GitHub Pages on pushes to `master`. The planned move to AWS is described in `docs/aws-hosting-options.md` and Phase 9 of `docs/astro-migration-plan.md`.
+`.github/workflows/deploy.yml` type-checks, builds and checks URLs on every pull request, and on pushes to `master` syncs `dist/` to S3 and invalidates CloudFront. It signs in to AWS through GitHub OIDC and reads the role, bucket and distribution from the repository secrets `AWS_DEPLOY_ROLE_ARN`, `SITE_BUCKET` and `DISTRIBUTION_ID`.
+
+The AWS infrastructure is a CDK app in `infra/`. Account-specific settings live in `infra/.env` (gitignored; see `infra/.env.example`):
+
+```sh
+cd infra
+npm install
+npx cdk synth                           # writes the template to cdk.out/ (gitignored)
+npx cdk deploy --profile <aws-profile>  # prints the values for the three secrets
+```

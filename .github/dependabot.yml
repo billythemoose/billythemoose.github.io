@@ -10,6 +10,13 @@ updates:
       dependencies:
         patterns: ['*']
         exclude-patterns: ['astro', '@astrojs/*', 'satteri']
+  - package-ecosystem: npm
+    directory: /infra
+    schedule:
+      interval: monthly
+    groups:
+      cdk:
+        patterns: ['*']
   - package-ecosystem: github-actions
     directory: /
     schedule:

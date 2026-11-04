@@ -1,0 +1,7 @@
+{
+  "app": "node --env-file-if-exists=.env --import tsx bin/app.ts",
+  "versionReporting": false,
+  "context": {
+    "cli-telemetry": false
+  }
+}

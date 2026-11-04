@@ -6,8 +6,7 @@ import { satteri } from '@astrojs/markdown-satteri';
 import { removeComments } from './src/lib/markdown-remove-comments.ts';
 
 export default defineConfig({
-  // Change to the custom domain during the AWS move (Phase 9).
-  site: 'https://billythemoose.github.io',
+  site: 'https://ineedmoreinformation.com',
   trailingSlash: 'always',
   build: {
     format: 'directory',

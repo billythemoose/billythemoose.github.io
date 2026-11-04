@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: pages-${{ github.ref }}
+  group: deploy-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -27,23 +27,42 @@ jobs:
       - run: npm run check
       - run: npm run build
       - run: npm run check:urls
-      - uses: actions/upload-pages-artifact@v5
+      - uses: actions/upload-artifact@v7
         with:
+          name: site
           path: dist
+          retention-days: 1
 
-  # Interim host until the AWS move (Phase 9 of docs/astro-migration-plan.md),
-  # which replaces this job with an OIDC role + `aws s3 sync` + CloudFront
-  # invalidation. Requires Settings > Pages > Source = "GitHub Actions".
+  # Deploys to S3 + CloudFront (infra/). The role, bucket and distribution are repository
+  # secrets, so GitHub masks them in the public logs; no AWS keys are stored anywhere.
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
     needs: build
     runs-on: ubuntu-latest
     permissions:
-      pages: write
+      contents: read
       id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5
+      - uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: dist
+      - uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: us-east-1
+          mask-aws-account-id: true
+      - name: Upload to S3
+        env:
+          BUCKET: ${{ secrets.SITE_BUCKET }}
+        run: |
+          # Hashed assets never change, so browsers can cache them for a year.
+          aws s3 sync dist/_astro "s3://$BUCKET/_astro" --delete --only-show-errors \
+            --cache-control 'public, max-age=31536000, immutable'
+          # Everything else: browsers revalidate, CloudFront caches until the invalidation below.
+          aws s3 sync dist "s3://$BUCKET" --delete --only-show-errors --exclude '_astro/*' \
+            --cache-control 'public, max-age=0, s-maxage=86400, must-revalidate'
+      - name: Invalidate CloudFront
+        env:
+          DISTRIBUTION_ID: ${{ secrets.DISTRIBUTION_ID }}
+        run: aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths '/*' > /dev/null
