@@ -3,7 +3,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const LIST = 'docs/migration/jekyll-urls.txt';
+const LIST = 'scripts/jekyll-urls.txt';
 const DIST = 'dist';
 
 const toFile = (url) => join(DIST, url.endsWith('/') ? `${url}index.html` : url);
