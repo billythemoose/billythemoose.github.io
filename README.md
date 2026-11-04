@@ -1,4 +1,4 @@
-# billythemoose.github.io
+# portfolio
 
 Personal portfolio, blog and CV for Michael Thomas, built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
 
