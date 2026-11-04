@@ -120,7 +120,17 @@ export class SiteStack extends Stack {
         },
       }),
     });
-    bucket.grantReadWrite(deployRole);
+    // Exactly what `aws s3 sync --delete` and one invalidation need, nothing more.
+    // sync compares by listing (size, timestamp), so it never reads objects.
+    deployRole.addToPolicy(
+      new iam.PolicyStatement({ actions: ['s3:ListBucket'], resources: [bucket.bucketArn] }),
+    );
+    deployRole.addToPolicy(
+      new iam.PolicyStatement({
+        actions: ['s3:PutObject', 's3:DeleteObject'],
+        resources: [bucket.arnForObjects('*')],
+      }),
+    );
     distribution.grantCreateInvalidation(deployRole);
 
     new budgets.CfnBudget(this, 'MonthlyBudget', {
