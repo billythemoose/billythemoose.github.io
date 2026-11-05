@@ -11,10 +11,10 @@ updates:
         versions: ['>=7']
     groups:
       astro:
-        patterns: ['astro', '@astrojs/*', 'satteri']
+        patterns: ['astro', '@astrojs/*']
       dependencies:
         patterns: ['*']
-        exclude-patterns: ['astro', '@astrojs/*', 'satteri']
+        exclude-patterns: ['astro', '@astrojs/*']
   - package-ecosystem: npm
     directory: /infra
     schedule:
