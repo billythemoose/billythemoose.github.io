@@ -103,9 +103,7 @@ export class SiteStack extends Stack {
       },
     });
 
-    const aliasTarget = route53.RecordTarget.fromAlias(
-      new targets.CloudFrontTarget(distribution),
-    );
+    const aliasTarget = route53.RecordTarget.fromAlias(new targets.CloudFrontTarget(distribution));
     for (const [id, recordName] of [
       ['Apex', domainName],
       ['Www', wwwDomainName],
