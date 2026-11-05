@@ -17,15 +17,15 @@ npm run check:urls # confirm every URL from the old Jekyll site still exists in 
 
 ## Content
 
-| What | Where |
-|---|---|
-| Blog posts | `src/content/blog/YYYY-MM-DD-slug.md` → `/blog/YYYY/slug/` |
-| Projects | `src/content/projects/slug.md` → `/projects/slug/` |
-| CV | `src/content/cv.yml` (sections of type `map`, `time_table` or `list`) |
-| Resume PDF | `public/assets/pdf/resume.pdf` |
-| About page bio | `src/content/about.md` |
-| Profile photo | `src/assets/prof_pic.jpg` |
-| Name, socials, nav | `src/config.ts` |
+| What               | Where                                                                 |
+| ------------------ | --------------------------------------------------------------------- |
+| Blog posts         | `src/content/blog/YYYY-MM-DD-slug.md` → `/blog/YYYY/slug/`            |
+| Projects           | `src/content/projects/slug.md` → `/projects/slug/`                    |
+| CV                 | `src/content/cv.yml` (sections of type `map`, `time_table` or `list`) |
+| Resume PDF         | `public/assets/pdf/resume.pdf`                                        |
+| About page bio     | `src/content/about.md`                                                |
+| Profile photo      | `src/assets/prof_pic.jpg`                                             |
+| Name, socials, nav | `src/config.ts`                                                       |
 
 Front matter is validated by the schemas in `src/content.config.ts`, so a typo fails the build.
 
@@ -36,9 +36,9 @@ A blog post:
 title: My Post
 date: 2026-11-02
 description: one-line summary shown in the post list
-tags: aws migration        # space-separated or a YAML list
+tags: aws migration # space-separated or a YAML list
 categories: case-study
-draft: true                # optional; drafts only appear in `npm run dev`
+draft: true # optional; drafts only appear in `npm run dev`
 ---
 ```
 
@@ -49,7 +49,7 @@ A project:
 title: My Project
 description: short summary for the project card
 category: technical
-importance: 2              # lower sorts first
+importance: 2 # lower sorts first
 repo: https://github.com/billythemoose/my-project
 demo: https://demo.example.com
 ---

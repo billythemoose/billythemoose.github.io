@@ -106,9 +106,7 @@
     "@aws-cdk/aws-cloudfront:defaultViewerProtocolPolicyRedirectToHttps": true,
     "@aws-cdk/aws-apigateway:logGroupDestinationArnWithoutWildcard": true,
     "@aws-cdk/aws-stepfunctions-tasks:evaluateExpressionDedicatedFunction": true,
-    "@aws-cdk/core:target-partitions": [
-      "aws"
-    ],
+    "@aws-cdk/core:target-partitions": ["aws"],
     "@aws-cdk/core:defaultCrossStackReferences": "weak"
   }
 }
