@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import PageHeader from '@/components/PageHeader.astro';
 
 const projects = (
   await getCollection('projects', ({ data }) => import.meta.env.DEV || !data.draft)
@@ -10,7 +9,10 @@ const categories = [...new Set(projects.map((project) => project.data.category ?
 ---
 
 <BaseLayout title="projects" description="Projects and demos.">
-  <PageHeader title="projects" description="things I've built" />
+  <div class="border-b border-divider pt-8 pb-12 text-center">
+    <h1 class="text-[5rem] text-accent">projects</h1>
+    <h2>things I've built</h2>
+  </div>
 
   {projects.length === 0 && <p>Nothing here yet.</p>}
 
@@ -19,7 +21,12 @@ const categories = [...new Set(projects.map((project) => project.data.category ?
       {categories.length > 1 && (
         <h2 class="mt-8 mb-4 border-b border-divider pt-2 text-right text-divider">{category}</h2>
       )}
-      <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+      <div
+        class:list={[
+          'grid gap-4 sm:grid-cols-2 md:grid-cols-3',
+          { 'mt-8': categories.length === 1 },
+        ]}
+      >
         {projects
           .filter((project) => (project.data.category ?? 'other') === category)
           .map((project) => (
